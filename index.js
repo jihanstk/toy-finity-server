@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("toys Infinity is running");
+  res.send("toys Infinity is running server");
 });
 
 app.listen(port, () => {
