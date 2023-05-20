@@ -40,6 +40,27 @@ async function run() {
       const result = await toyCollection.findOne(filter);
       res.send(result);
     });
+    app.get("/all-toy", async (req, res) => {
+      const search = req.query;
+      console.log(search);
+      const filter = { toyName: search.toyName };
+      const result = await toyCollection.find(filter).toArray();
+      res.send(result);
+    });
+    app.get("/category-data", async (req, res) => {
+      const category = req.query;
+      console.log(category);
+      const filter = { category: category.category };
+      const result = await toyCollection.find(filter).toArray();
+      res.send(result);
+    });
+    app.get("/category-list", async (req, res) => {
+      // const category = req.query;
+      // console.log(category);
+      const filter = { category: category.category };
+      const result = await toyCollection.find().toArray();
+      res.send(result);
+    });
     // get Toy by email
     app.get("/my-toys", async (req, res) => {
       let query = {};
