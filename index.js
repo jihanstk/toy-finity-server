@@ -34,6 +34,15 @@ async function run() {
       const result = await toyCollection.find().limit(20).toArray();
       res.send(result);
     });
+    app.get("/sort-by-price", async (req, res) => {
+      const sortType = req.query.sort;
+      console.log(sortType);
+      const result = await toyCollection
+        .find()
+        .sort({ price: sortType })
+        .toArray();
+      res.send(result);
+    });
     app.get("/all-toys/:id", async (req, res) => {
       const id = req.params.id;
       const filter = { _id: new ObjectId(id) };
@@ -88,7 +97,7 @@ async function run() {
         photo: toy.photo,
         seller: toy.seller,
         category: toy.category,
-        price: toy.price,
+        price: parseInt(toy.price),
         rating: toy.rating,
         quantity: toy.quantity,
         details: toy.details,
