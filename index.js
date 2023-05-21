@@ -97,7 +97,7 @@ async function run() {
         photo: toy.photo,
         seller: toy.seller,
         category: toy.category,
-        price: parseInt(toy.price),
+        price: parseFloat(toy.price),
         rating: toy.rating,
         quantity: toy.quantity,
         details: toy.details,
@@ -113,7 +113,7 @@ async function run() {
       const filter = { _id: new ObjectId(id) };
       const updatedDoc = {
         $set: {
-          price: updated.price,
+          price: parseFloat(updated.price),
           quantity: updated.quantity,
           details: updated.details,
         },
